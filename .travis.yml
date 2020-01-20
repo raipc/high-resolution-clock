@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - openjdk8
+  - openjdk11
+notifications:
+  webhooks: https://apps.axibase.com/api/v1/messages/wk-travis-ci/travis-ci?json.parse=payload&exclude=payload.id;payload.number;payload.config*;payload.repository*;payload.matrix*;payload.*commit*;payload.status_message;payload.result&include=payload.repository.name&command.message=payload.result_message
