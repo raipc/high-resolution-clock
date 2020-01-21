@@ -7,11 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 class HighResolutionClockLoader {
-	private static final Logger logger = LogManager.getLogManager().getLogger(HighResolutionClockLoader.class.getName());
+	private static final Logger logger = Logger.getLogger(HighResolutionClockLoader.class.getName());
 
 	static boolean loadLibrary() {
 		String libraryName = resolveLibraryName();
@@ -20,7 +19,7 @@ class HighResolutionClockLoader {
 			if (lib == null) {
 				logger.log(Level.SEVERE, "Could not load {0} library", libraryName);
 			} else {
-				File tmpDir = new File(System.getProperty("java.io.tmpdir"), "native");
+				File tmpDir = new File(System.getProperty("java.io.tmpdir"));
 				destination = new File(tmpDir, libraryName);
 				copyToFile(lib, destination);
 				System.load(destination.getAbsolutePath());
